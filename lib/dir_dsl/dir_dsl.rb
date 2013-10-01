@@ -1,27 +1,25 @@
 require 'file_utils/file_utils'
-require 'meta_methods'
 
 class DirDSL
   include FileUtils
-  include MetaMethods
 
-  def initialize name, basedir
-    @name = name
-    @basedir = File.expand_path(basedir)
+  attr_reader :from_root, :to_root
+
+  def initialize from_root, to_root
+    @from_root = File.expand_path(from_root)
+    @to_root = File.expand_path(to_root)
   end
 
-  def build(name=nil, &execute_block)
-    name = name.nil? ? @name : name
-
-    evaluate_dsl(self, nil, execute_block)
+  def build(&block)
+    self.instance_eval(&block)
   end
 
   def entry_exist? entry_name
-    File.exist? full_name("#@name/#{entry_name}")
+    File.exist? "#{to_root}/#{entry_name}"
   end
 
   def entries_size
-    list = Dir.glob("#{full_name(@name)}/**/*")
+    list = Dir.glob("#{to_root}/**/*")
 
     cnt = 0
     list.each do |name|
@@ -32,19 +30,19 @@ class DirDSL
   end
 
   def list dir="."
-    list = pattern_to_files full_name("#@name/#{dir}"), "**/*"
+    list = pattern_to_files"#{from_root}/#{dir}", "**/*"
 
     list.each_with_index do |name, index|
-      list[index] = name[full_name("#@name/#{dir}").length+1..-1]
+      list[index] = name["#{from_root}/#{dir}".length+1..-1]
     end
   end
 
   def file params
-    to_dir = to_dir(params[:name], params[:to_dir])
+    to_dir = to_dir(params[:to_dir], params[:name])
 
-    create_directory full_name(to_dir)
+    create_directory to_dir unless File.exist? to_dir
 
-    write_to_file full_name(params[:name]), full_name("#{to_dir}/#{File.basename(params[:name])}")
+    write_to_file "#{from_root}/#{params[:name]}", "#{to_dir}/#{File.basename(params[:name])}"
   end
 
   def content params
@@ -53,52 +51,42 @@ class DirDSL
     stream = source.kind_of?(String) ? StringIO.new(source) : source
     content = stream.read
 
-    to_dir = to_dir(params[:name], params[:to_dir])
+    to_dir = to_dir(params[:to_dir], params[:name])
 
-    create_directory full_name(to_dir)
+    create_directory to_dir unless File.exist? to_dir
 
-    write_content_to_file content, full_name("#{to_dir}/#{File.basename(params[:name])}")
+    write_content_to_file content, "#{to_dir}/#{File.basename(params[:name])}"
   end
 
   def directory params
     if params[:from_dir].nil?
-      create_empty_directory params[:to_dir]
+      to_dir = "#{to_root}/#{params[:to_dir]}"
+
+      create_directory to_dir unless File.exist? to_dir
     else
       if params[:to_dir] == "." || params[:to_dir].nil?
-        to_dir = "#@name"
+        to_dir = params[:from_dir]
       else
-        to_dir = "#@name/#{params[:to_dir]}"
+        to_dir = params[:to_dir]
       end
 
       filter = params[:filter].nil? ? "**/*" : params[:filter]
 
-      copy_files full_name(params[:from_dir]), full_name(to_dir), filter
+      copy_files "#{from_root}/#{params[:from_dir]}", "#{to_root}/#{to_dir}", filter
     end
   end
 
   private
 
-  def to_dir name, dir
+  def to_dir dir, name
     if dir.nil?
       from_dir = File.dirname(name)
-      (from_dir == ".") ? @name : "#@name/#{from_dir}"
+      to_dir = (from_dir == ".") ? to_root : "#{to_root}/#{from_dir}"
     else
-      (dir == ".") ? @name : "#@name/#{dir}"
+      to_dir = (dir == ".") ? to_root : "#{to_root}/#{dir}"
     end
-  end
 
-  def create_empty_directory dir
-    to_dir = (dir == ".") ? @name : "#@name/#{dir}"
-
-    create_directory full_name(to_dir)
-  end
-
-  def full_name? name
-    File.expand_path(name) == name
-  end
-
-  def full_name name
-    full_name?(name) ? name : "#@basedir/#{name}"
+    to_dir
   end
 
 end

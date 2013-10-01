@@ -6,12 +6,13 @@ require 'file_utils/file_utils'
 describe DirDSL do
   include FileUtils
 
-  let(:basedir) { "#{File.dirname(__FILE__)}/.." }
+  let(:from_basedir) { "#{File.dirname(__FILE__)}/.." }
+  let(:to_basedir) { "#{File.dirname(__FILE__)}/../build" }
 
-  subject { DirDSL.new("build/test", basedir) }
+  subject { DirDSL.new(from_basedir, to_basedir) }
 
   after do
-    delete_directory "#{basedir}/build"
+    delete_directory "#{to_basedir}"
   end
 
   it "should create new directory with files at particular folder" do
@@ -38,7 +39,7 @@ describe DirDSL do
   end
 
   it "should create new directory with file created from file" do
-    src = File.open("#{basedir}/Rakefile")
+    src = File.open("#{from_basedir}/Rakefile")
     subject.build do
       content :name => "Rakefile", :source => src
     end
@@ -68,7 +69,7 @@ describe DirDSL do
       directory :from_dir => "spec"
     end
 
-    subject.list.should include "spec_helper.rb"
+    subject.list("spec").should include "spec_helper.rb"
   end
 
   it "should display files in specified subdirectory" do
@@ -76,7 +77,7 @@ describe DirDSL do
       directory :from_dir => "lib"
     end
 
-    subject.list("dir_dsl").first.should =~ %r{dir_dsl.rb}
+    subject.list("lib/dir_dsl").first.should =~ %r{dir_dsl.rb}
   end
 
 end
