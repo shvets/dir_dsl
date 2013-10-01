@@ -69,7 +69,7 @@ describe DirDSL do
       directory :from_dir => "spec"
     end
 
-    subject.list("spec").should include "spec_helper.rb"
+    subject.entry_exist?("spec/spec_helper.rb").should be_true
   end
 
   it "should display files in specified subdirectory" do
@@ -77,7 +77,15 @@ describe DirDSL do
       directory :from_dir => "lib"
     end
 
-    subject.list("lib/dir_dsl").first.should =~ %r{dir_dsl.rb}
+    subject.entry_exist?("lib/dir_dsl.rb").should be_true
+  end
+
+  it "should exclude files from result" do
+    subject.build do
+      directory :from_dir => "lib", :excludes => "version.rb"
+    end
+
+    subject.entry_exist?("lib/version.rb").should be_false
   end
 
 end
