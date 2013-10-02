@@ -1,7 +1,9 @@
 require 'file_utils/file_utils'
+require 'meta_methods/meta_methods'
 
 class DirDSL
   include FileUtils
+  include MetaMethods
 
   attr_reader :from_root, :to_root
 
@@ -12,7 +14,7 @@ class DirDSL
   end
 
   def build(&block)
-    self.instance_eval(&block)
+    evaluate_dsl(self, nil, block)
   end
 
   def global_ignore ignore
