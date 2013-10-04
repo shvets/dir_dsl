@@ -15,3 +15,7 @@
 == Version 1.0.3
 
 * Bug fixes.
+
+== Version 1.0.4
+
+* Adding version to gemspec.

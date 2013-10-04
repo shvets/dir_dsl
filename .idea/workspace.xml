@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" name="Default" comment="" />
+    <list default="true" id="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGES" afterPath="$PROJECT_DIR$/CHANGES" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/dir_dsl/version.rb" afterPath="$PROJECT_DIR$/lib/dir_dsl/version.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="dir_dsl.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/.ruby-gemset" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380572301193" ignored="false" />
-    <file path="/CHANGES" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380661521876" ignored="false" />
+    <file path="/CHANGES" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380922799388" ignored="false" />
     <file path="/dir_dsl.rb" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380731843904" ignored="false" />
     <file path="/version.rb" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380574041095" ignored="false" />
     <file path="/a.dummy" changelist="926fa2c3-b388-4ecb-b462-c1ec2e5a539e" time="1380653633054" ignored="false" />
@@ -104,16 +108,25 @@
       <file leaf-file-name="CHANGES" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CHANGES">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="2" selection-start="133" selection-end="142" vertical-scroll-proportion="0.0">
+            <state line="20" column="27" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dir_dsl.gemspec.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="version.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/dir_dsl/version.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="18" selection-start="31" selection-end="31" vertical-scroll-proportion="0.020050125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dir_dsl.gemspec.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dir_dsl.gemspec.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="28" selection-start="713" selection-end="713" vertical-scroll-proportion="0.33117723">
+            <state line="16" column="0" selection-start="685" selection-end="713" vertical-scroll-proportion="-10.24">
               <folding />
             </state>
           </provider>
@@ -171,10 +184,10 @@
         <option value="$PROJECT_DIR$/Rakefile" />
         <option value="$PROJECT_DIR$/spec/dir_dsl_spec.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/lib/dir_dsl/version.rb" />
-        <option value="$PROJECT_DIR$/CHANGES" />
         <option value="$PROJECT_DIR$/lib/dir_dsl/dir_dsl.rb" />
         <option value="$PROJECT_DIR$/dir_dsl.gemspec.erb" />
+        <option value="$PROJECT_DIR$/CHANGES" />
+        <option value="$PROJECT_DIR$/lib/dir_dsl/version.rb" />
       </list>
     </option>
   </component>
@@ -803,11 +816,6 @@
         <state line="198" column="6" selection-start="5538" selection-end="5538" vertical-scroll-proportion="-6.230769" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dir_dsl/version.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="18" selection-start="31" selection-end="31" vertical-scroll-proportion="0.020025032" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Rakefile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="0" selection-start="805" selection-end="995" vertical-scroll-proportion="0.76095116" />
@@ -851,16 +859,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGES">
+    <entry file="file://$PROJECT_DIR$/dir_dsl.gemspec.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="2" selection-start="133" selection-end="142" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="685" selection-end="713" vertical-scroll-proportion="-10.24">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dir_dsl.gemspec.erb">
+    <entry file="file://$PROJECT_DIR$/CHANGES">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="28" selection-start="713" selection-end="713" vertical-scroll-proportion="0.33117723">
+        <state line="20" column="27" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dir_dsl/version.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="18" selection-start="31" selection-end="31" vertical-scroll-proportion="0.020050125">
           <folding />
         </state>
       </provider>
