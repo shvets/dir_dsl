@@ -1,9 +1,9 @@
 require 'file_utils/file_utils'
-require 'meta_methods/meta_methods'
+require 'meta_methods'
 
 class DirDSL
   include FileUtils
-  include MetaMethods
+  include MetaMethods::Core
 
   attr_reader :from_root, :to_root
 

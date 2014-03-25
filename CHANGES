@@ -19,3 +19,7 @@
 == Version 1.0.4
 
 * Adding version to gemspec.
+
+== Version 1.0.5
+
+* Changing meta_methods gem version.
