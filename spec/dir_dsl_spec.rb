@@ -22,11 +22,11 @@ describe DirDSL do
       file :name => "spec/spec_helper.rb", :to_dir => "my_config"
     end
 
-    subject.entry_exist?("Gemfile").should be_true
-    subject.entry_exist?("my_config/Rakefile").should be_true
-    subject.entry_exist?("my_config/spec_helper.rb").should be_true
+    expect(subject.entry_exist?("Gemfile")).to be_truthy
+    expect(subject.entry_exist?("my_config/Rakefile")).to be_truthy
+    expect(subject.entry_exist?("my_config/spec_helper.rb")).to be_truthy
 
-    subject.entries_size.should == 3
+    expect(subject.entries_size).to eq 3
   end
 
   it "should create new directory with file created from string" do
@@ -34,8 +34,8 @@ describe DirDSL do
       content :name => "README", :source => "My README file content"
     end
 
-    subject.entry_exist?("README").should be_true
-    subject.entries_size.should == 1
+    expect(subject.entry_exist?("README")).to be_truthy
+    expect(subject.entries_size).to eq 1
   end
 
   it "should create new directory with file created from file" do
@@ -44,8 +44,8 @@ describe DirDSL do
       content :name => "Rakefile", :source => src
     end
 
-    subject.entry_exist?("Rakefile").should be_true
-    subject.entries_size.should == 1
+    expect(subject.entry_exist?("Rakefile")).to be_truthy
+    expect(subject.entries_size).to eq 1
   end
 
   it "should create new directory with new empty folder" do
@@ -53,7 +53,7 @@ describe DirDSL do
       directory :to_dir => "my_config"
     end
 
-    subject.entry_exist?("my_config").should be_true
+    expect(subject.entry_exist?("my_config")).to be_truthy
   end
 
   it "should create new directory with new folder" do
@@ -61,7 +61,7 @@ describe DirDSL do
       directory :from_dir => "config", :to_dir => "my_config"
     end
 
-    subject.entry_exist?("my_config").should be_true
+    expect(subject.entry_exist?("my_config")).to be_truthy
   end
 
   it "should display files in current directory" do
@@ -69,7 +69,7 @@ describe DirDSL do
       directory :from_dir => "spec"
     end
 
-    subject.entry_exist?("spec/spec_helper.rb").should be_true
+    expect(subject.entry_exist?("spec/spec_helper.rb")).to be_truthy
   end
 
   it "should display files in specified subdirectory" do
@@ -77,7 +77,7 @@ describe DirDSL do
       directory :from_dir => "lib"
     end
 
-    subject.entry_exist?("lib/dir_dsl.rb").should be_true
+    expect(subject.entry_exist?("lib/dir_dsl.rb")).to be_truthy
   end
 
   it "should exclude files from result" do
@@ -85,7 +85,7 @@ describe DirDSL do
       directory :from_dir => "lib", :excludes => "version.rb"
     end
 
-    subject.entry_exist?("lib/version.rb").should be_false
+    expect(subject.entry_exist?("lib/version.rb")).to be_falsey
   end
 
 end

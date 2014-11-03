@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 group :default do
   gem "file_utils"
-  gem "meta_methods"
+  gem "meta_methods", "~> 1.2.0"
 end
 
 group :development do

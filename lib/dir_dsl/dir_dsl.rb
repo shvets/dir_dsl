@@ -1,9 +1,8 @@
 require 'file_utils/file_utils'
-require 'meta_methods'
+require 'meta_methods/dsl_builder'
 
 class DirDSL
   include FileUtils
-  include MetaMethods::Core
 
   attr_reader :from_root, :to_root
 
@@ -14,7 +13,7 @@ class DirDSL
   end
 
   def build(&block)
-    evaluate_dsl(self, nil, block)
+    MetaMethods::DslBuilder.instance.evaluate_dsl(self, nil, block)
   end
 
   def global_ignore ignore
